@@ -1,0 +1,27 @@
+services:
+  acl_manager:
+    build: .
+    container_name: acl_manager_exapp
+    ports:
+      - "9030:9030"
+    environment:
+      # Nextcloud настройки
+      - NEXTCLOUD_URL=${NEXTCLOUD_URL}
+      - APP_SECRET=${APP_SECRET}
+      - APP_PORT=9030
+      
+      # Windows Agent настройки
+      - AGENT_URL=${AGENT_URL}
+      - AGENT_BEARER_TOKEN=${AGENT_BEARER_TOKEN}
+      - AGENT_CERT_PATH=/certs/client.pfx
+      - AGENT_CERT_PASSWORD=${AGENT_CERT_PASSWORD}
+    volumes:
+      # Монтируем сертификат для доступа к агенту
+      - ${HOST_CERT_PATH}:/certs/client.pfx:ro
+    restart: unless-stopped
+    networks:
+      - nextcloud
+
+networks:
+  nextcloud:
+    external: true
