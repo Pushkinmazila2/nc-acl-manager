@@ -1,0 +1,20 @@
+{
+  "id": "acl_manager",
+  "name": "ACL Manager",
+  "version": "2.0.0",
+  "summary": "Управление ACL правами через Windows Agent",
+  "description": "External App для управления NTFS ACL и AD группами через AppAPI",
+  "author": "IT Department",
+  "licence": "AGPL-3.0",
+  "documentation": "https://github.com/company/nc-acl-manager",
+  "website": "https://github.com/company/nc-acl-manager",
+  "release": {
+    "min_version": "30.0.0",
+    "max_version": "34.0.0"
+  },
+  "external": true,
+  "scopes": [
+    "FILES",
+    "FILES_SHARING"
+  ]
+}
